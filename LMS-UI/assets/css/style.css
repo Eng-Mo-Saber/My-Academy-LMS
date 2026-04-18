@@ -1,0 +1,331 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap');
+
+:root {
+    --primary-color: #0d6efd;
+    --sidebar-width: 260px;
+    --bg-light: #f8f9fa;
+    --text-dark: #212529;
+}
+
+body {
+    font-family: 'Cairo', sans-serif;
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+    overflow-x: hidden;
+}
+
+body.dark-mode {
+    --bg-light: #121212;
+    --text-dark: #f8f9fa;
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+}
+
+.dark-mode .card,
+.dark-mode .bg-white {
+    background-color: #1e1e1e !important;
+    border-color: #333;
+    color: #fff;
+}
+
+.dark-mode .table {
+    color: #fff;
+}
+
+/* Sidebar Styles */
+.sidebar {
+    width: var(--sidebar-width);
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    background-color: #fff;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease;
+    z-index: 1040;
+    overflow-y: auto;
+}
+
+.dark-mode .sidebar {
+    background-color: #1e1e1e;
+    border-left: 1px solid #333;
+}
+
+.main-content {
+    margin-right: var(--sidebar-width);
+    transition: margin 0.3s ease;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Responsive Sidebar */
+@media (max-width: 991.98px) {
+    .sidebar {
+        transform: translateX(100%);
+    }
+
+    .sidebar.show {
+        transform: translateX(0);
+    }
+
+    .main-content {
+        margin-right: 0;
+    }
+}
+
+/* Chat Layout */
+.chat-container {
+    height: calc(100vh - 150px);
+    display: flex;
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
+}
+
+.dark-mode .chat-container {
+    background: #1e1e1e;
+}
+
+.chat-sidebar {
+    width: 300px;
+    border-left: 1px solid #eee;
+    overflow-y: auto;
+}
+
+.dark-mode .chat-sidebar {
+    border-left-color: #333;
+}
+
+.chat-window {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.chat-messages {
+    flex-grow: 1;
+    padding: 20px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.message {
+    max-width: 70%;
+    padding: 10px 15px;
+    border-radius: 15px;
+}
+
+.message.received {
+    align-self: flex-start;
+    background-color: #f1f0f0;
+    border-top-right-radius: 0;
+}
+
+.dark-mode .message.received {
+    background-color: #333;
+}
+
+.message.sent {
+    align-self: flex-end;
+    background-color: var(--primary-color);
+    color: white;
+    border-top-left-radius: 0;
+}
+
+@media (max-width: 767.98px) {
+    .chat-container {
+        flex-direction: column;
+        height: 80vh;
+    }
+
+    .chat-sidebar {
+        width: 100%;
+        height: 30%;
+        border-left: none;
+        border-bottom: 1px solid #eee;
+    }
+
+    .chat-window {
+        height: 70%;
+    }
+}
+
+.video-container {
+    background: #000;
+    border-radius: 8px;
+    overflow: hidden;
+    aspect-ratio: 16 / 9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+.lesson-sidebar {
+    height: calc(100vh - 100px);
+    overflow-y: auto;
+}
+
+.lesson-item.active {
+    background-color: rgba(13, 110, 253, 0.1);
+    border-right: 4px solid #0d6efd;
+}
+
+@media (max-width: 991.98px) {
+    .lesson-sidebar {
+        height: auto;
+        max-height: 400px;
+    }
+}
+
+/* تنسيقات إدارة الدورات */
+.table img {
+    object-fit: cover;
+    border: 1px solid #eee;
+}
+
+.card {
+    border-radius: 12px;
+}
+
+.badge {
+    font-weight: 500;
+    padding: 0.5em 1em;
+}
+
+/* تنسيقات الطلبات */
+.status-badge {
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: bold;
+    display: inline-block;
+}
+
+.status-paid {
+    background-color: #d1e7dd;
+}
+
+.status-pending {
+    background-color: #fff3cd;
+}
+
+.table thead th {
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+/* Sidebar Global Style */
+:root {
+    --sidebar-width: 260px;
+    --primary-color: #0d6efd;
+}
+
+.sidebar {
+    width: var(--sidebar-width);
+    height: 100vh;
+    position: fixed;
+    right: 0;
+    top: 0;
+    background: #fff;
+    z-index: 1050;
+    transition: all 0.3s ease-in-out;
+    border-left: 1px solid #f1f1f1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* التنسيق النشط (Active) */
+.sidebar .nav-link.active {
+    background-color: var(--primary-color) !important;
+    color: #fff !important;
+    box-shadow: 0 4px 10px rgba(13, 110, 253, 0.2);
+}
+
+.sidebar .nav-link {
+    display: flex;
+    align-items: center;
+    font-size: 0.95rem;
+    color: #444;
+}
+
+.sidebar .nav-link:hover:not(.active) {
+    background-color: #f8f9fa;
+    color: var(--primary-color);
+    padding-right: 1.5rem;
+    /* حركة انيميشن بسيطة */
+}
+
+/* الموبايل */
+@media (max-width: 991.98px) {
+    .sidebar {
+        right: calc(-1 * var(--sidebar-width));
+    }
+
+    .sidebar.show {
+        right: 0;
+    }
+
+    .main-content {
+        margin-right: 0 !important;
+    }
+}
+
+.main-content {
+    margin-right: var(--sidebar-width);
+    transition: margin 0.3s ease;
+}
+
+/* تظبيط شكل الكروت في صفحة الإضافة */
+.main-content {
+    background-color: #f0f2f5;
+    /* لون خلفية أهدى شوية */
+}
+
+.card {
+    border-radius: 15px !important;
+    border: none !important;
+    margin-bottom: 1.5rem;
+}
+
+.form-control:focus {
+    border-color: #0d6efd;
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.05);
+}
+
+/* عشان الزرار يبقى شكله أشيك */
+.btn-primary {
+    padding: 12px;
+    border-radius: 10px;
+    background-color: #0d6efd;
+}
+
+/* ستايل سريع للاختبار عشان تضمن الشكل قبل ما تعدل في الملف الخارجي */
+.quiz-options .form-check {
+    transition: all 0.2s ease;
+    cursor: pointer;
+    background-color: #fff;
+    position: relative;
+}
+
+.quiz-options .form-check:hover {
+    background-color: #f0f7ff;
+    border-color: #0d6efd !important;
+}
+
+.quiz-options .form-check input:checked+label {
+    font-weight: bold;
+    color: #0d6efd;
+}
+
+.sticky-quiz-header {
+    top: 0;
+    z-index: 1020;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(5px);
+    border-bottom: 2px solid #eee;
+}
