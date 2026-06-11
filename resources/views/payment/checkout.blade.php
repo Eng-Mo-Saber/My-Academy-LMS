@@ -1,0 +1,173 @@
+@extends('layout.app')
+
+@section('title','إتمام الدفع - أكاديميتي' )
+
+
+@section('content')
+    <div class="container py-4">
+        <div class="row g-4">
+            <div class="col-lg-8 order-2 order-lg-1">
+                <form class="needs-validation" novalidate action="payment-success.html">
+                    
+                    <div class="card shadow-sm border-0 mb-4">
+                        <div class="card-header bg-white py-3">
+                            <h5 class="mb-0 fw-bold"><i class="bi bi-person me-2 text-primary"></i> بيانات الطالب</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label class="form-label">الاسم الكامل</label>
+                                    <input type="text" class="form-control" value="محمد أحمد" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">البريد الإلكتروني</label>
+                                    <input type="email" class="form-control" value="mohamed@example.com" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">رقم الهاتف</label>
+                                    <input type="tel" class="form-control" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">الدولة</label>
+                                    <select class="form-select" required>
+                                        <option value="">اختر الدولة...</option>
+                                        <option value="EG" selected>مصر</option>
+                                        <option value="SA">السعودية</option>
+                                        <option value="AE">الإمارات</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card shadow-sm border-0 mb-4">
+                        <div class="card-header bg-white py-3">
+                            <h5 class="mb-0 fw-bold"><i class="bi bi-credit-card me-2 text-primary"></i> طريقة الدفع</h5>
+                        </div>
+                        <div class="card-body p-0">
+                            <div class="d-flex align-items-start p-3 border-bottom">
+                                <div class="nav flex-column nav-pills w-100 gap-2" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                                    
+                                    <button class="nav-link active text-start d-flex justify-content-between align-items-center" id="card-tab" data-bs-toggle="pill" data-bs-target="#card-payment" type="button" role="tab">
+                                        <span><i class="bi bi-credit-card-2-front me-2"></i> بطاقة ائتمان / خصم مباشر</span>
+                                        <div class="d-flex gap-1">
+                                            <i class="bi bi-cc-visa fs-5"></i>
+                                            <i class="bi bi-cc-mastercard fs-5"></i>
+                                        </div>
+                                    </button>
+
+                                    <button class="nav-link text-start" id="wallet-tab" data-bs-toggle="pill" data-bs-target="#wallet-payment" type="button" role="tab">
+                                        <i class="bi bi-phone-vibrate me-2"></i> فودافون كاش / محافظ إلكترونية
+                                    </button>
+
+                                    <button class="nav-link text-start" id="fawry-tab" data-bs-toggle="pill" data-bs-target="#fawry-payment" type="button" role="tab">
+                                        <i class="bi bi-shop me-2"></i> فوري (Fawry)
+                                    </button>
+
+                                    <button class="nav-link text-start" id="cod-tab" data-bs-toggle="pill" data-bs-target="#cod-payment" type="button" role="tab">
+                                        <i class="bi bi-cash me-2"></i> الدفع نقداً (في المركز)
+                                    </button>
+
+                                </div>
+                            </div>
+
+                            <div class="tab-content p-4 bg-light" id="v-pills-tabContent">
+                                
+                                <div class="tab-pane fade show active" id="card-payment" role="tabpanel">
+                                    <div class="row g-3">
+                                        <div class="col-12">
+                                            <label class="form-label">الاسم على البطاقة</label>
+                                            <input type="text" class="form-control" placeholder="الاسم كما هو مطبوع على البطاقة" required>
+                                        </div>
+                                        <div class="col-12">
+                                            <label class="form-label">رقم البطاقة</label>
+                                            <div class="input-group">
+                                                <input type="text" class="form-control" placeholder="0000 0000 0000 0000" dir="ltr" required>
+                                                <span class="input-group-text"><i class="bi bi-credit-card"></i></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <label class="form-label">تاريخ الانتهاء</label>
+                                            <input type="text" class="form-control" placeholder="MM/YY" dir="ltr" required>
+                                        </div>
+                                        <div class="col-6">
+                                            <label class="form-label">رمز الأمان (CVV)</label>
+                                            <input type="text" class="form-control" placeholder="123" dir="ltr" required>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="tab-pane fade" id="wallet-payment" role="tabpanel">
+                                    <div class="alert alert-info">
+                                        <i class="bi bi-info-circle me-2"></i> سيتم تحويلك لصفحة المحفظة لتأكيد الدفع، أو يرجى تحويل المبلغ للرقم الموضح.
+                                    </div>
+                                    <label class="form-label">رقم هاتف المحفظة</label>
+                                    <input type="tel" class="form-control" placeholder="010xxxxxxxxx" dir="ltr">
+                                </div>
+
+                                <div class="tab-pane fade" id="fawry-payment" role="tabpanel">
+                                    <div class="text-center py-3">
+                                        <i class="bi bi-shop display-4 text-warning mb-3"></i>
+                                        <h6 class="fw-bold">الدفع عبر منافذ فوري</h6>
+                                        <p class="text-muted small">بعد التأكيد، سيظهر لك رقم مرجعي يمكنك استخدامه للدفع في أي منفذ فوري خلال 24 ساعة.</p>
+                                    </div>
+                                </div>
+
+                                <div class="tab-pane fade" id="cod-payment" role="tabpanel">
+                                    <div class="text-center py-3">
+                                        <i class="bi bi-cash display-4 text-success mb-3"></i>
+                                        <h6 class="fw-bold">الدفع في مقر الأكاديمية</h6>
+                                        <p class="text-muted small">سيتم حجز مقعدك بشكل مبدئي، يرجى زيارة المركز خلال 48 ساعة لدفع المبلغ وتأكيد الاشتراك.</p>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-lg w-100 fw-bold shadow-sm">
+                        تأكيد الدفع (49.99$) <i class="bi bi-lock ms-1"></i>
+                    </button>
+                    <p class="text-center text-muted small mt-3"><i class="bi bi-shield-check text-success"></i> عملية الدفع مشفرة وآمنة بنسبة 100%</p>
+                </form>
+            </div>
+
+            <div class="col-lg-4 order-1 order-lg-2">
+                <div class="card shadow-sm border-0 sticky-top" style="top: 20px;">
+                    <div class="card-header bg-white py-3">
+                        <h5 class="mb-0 fw-bold">ملخص الطلب</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="d-flex mb-3 pb-3 border-bottom">
+                            <img src="https://via.placeholder.com/80x60" class="rounded me-3" alt="Course Image">
+                            <div>
+                                <h6 class="fw-bold mb-1">تطوير واجهات المستخدم الشاملة</h6>
+                                <p class="text-muted small mb-0">المدرب: أحمد محمد</p>
+                            </div>
+                        </div>
+                        
+                        <div class="d-flex justify-content-between mb-2">
+                            <span class="text-muted">السعر الأصلي</span>
+                            <span>$59.99</span>
+                        </div>
+                        <div class="d-flex justify-content-between mb-3 text-success">
+                            <span>الخصم</span>
+                            <span>-$10.00</span>
+                        </div>
+                        
+                        <div class="input-group mb-4">
+                            <input type="text" class="form-control" placeholder="كود الخصم">
+                            <button class="btn btn-outline-secondary" type="button">تطبيق</button>
+                        </div>
+
+                        <hr>
+                        <div class="d-flex justify-content-between align-items-center mb-0">
+                            <span class="fw-bold fs-5">الإجمالي</span>
+                            <span class="fw-bold fs-4 text-primary">$49.99</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+@endsection
