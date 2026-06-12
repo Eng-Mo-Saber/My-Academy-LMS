@@ -1,51 +1,9 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>مشغل الدروس - أكاديميتي</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="../assets/css/style.css">
-</head>
-<body class="bg-light">
-<div class="sidebar p-3 shadow-sm" id="sidebar">
-    <div class="sidebar-header text-center mb-4 border-bottom pb-3">
-        <h4 class="fw-bold text-primary mb-0">
-            <i class="bi bi-book-half"></i> أكاديميتي
-        </h4>
-    </div>
-    
-    <ul class="nav flex-column gap-2" id="sidebarNav">
-        <li class="nav-item">
-            <a href="dashboard.html" class="nav-link rounded px-3 py-2 text-dark">
-                <i class="bi bi-speedometer2 me-2"></i> لوحة التحكم
-            </a>
-        </li>
-        <li class="nav-item">
-            <a href="my-courses.html" class="nav-link rounded px-3 py-2 text-dark">
-                <i class="bi bi-collection-play me-2"></i> دوراتي
-            </a>
-        </li>
-        <li class="nav-item">
-            <a href="chat.html" class="nav-link rounded px-3 py-2 text-dark">
-                <i class="bi bi-chat-dots me-2"></i> الدردشة
-            </a>
-        </li>
-        <li class="nav-item">
-            <a href="profile.html" class="nav-link rounded px-3 py-2 text-dark">
-                <i class="bi bi-person me-2"></i> الملف الشخصي
-            </a>
-        </li>
-    </ul>
-    
-    <div class="sidebar-footer mt-auto pt-3">
-        <hr>
-        <a href="../pages/login.html" class="btn btn-outline-danger w-100 d-flex align-items-center justify-content-center border-0 shadow-none">
-            <i class="bi bi-box-arrow-right me-2"></i> تسجيل الخروج
-        </a>
-    </div>
-</div>
+@extends('layout.app')
+
+@section('title','مشغل الدروس - أكاديميتي' )
+
+
+@section('content')
     <nav class="navbar navbar-dark bg-dark px-4 py-2 sticky-top">
         <div class="container-fluid">
             <a href="my-courses.html" class="btn btn-outline-light btn-sm me-2">
@@ -168,10 +126,4 @@
 
         </div>
     </div>
-
-    <div id="toastContainer" class="toast-container position-fixed bottom-0 start-0 p-3"></div>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="../assets/js/main.js"></script>
-</body>
-</html>
+@endsection

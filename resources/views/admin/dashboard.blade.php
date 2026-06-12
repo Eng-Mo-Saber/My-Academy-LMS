@@ -1,28 +1,9 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>لوحة تحكم الإدارة - أكاديميتي</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="../assets/css/style.css">
-</head>
-<body>
-    <div class="sidebar p-3" id="sidebar">
-        <h4 class="fw-bold text-primary text-center mb-4"><i class="bi bi-shield-lock"></i> الإدارة</h4>
-        <ul class="nav flex-column">
-            <li class="nav-item mb-2"><a href="dashboard.html" class="nav-link text-dark"><i class="bi bi-speedometer2 me-2"></i> لوحة التحكم</a></li>
-            <li class="nav-item mb-2"><a href="users.html" class="nav-link text-dark"><i class="bi bi-people me-2"></i> إدارة المستخدمين</a></li>
-            <li class="nav-item mb-2"><a href="categories.html" class="nav-link text-dark"><i class="bi bi-list-task me-2"></i> إدارة التصنيفات</a></li>
-            <li class="nav-item mb-2"><a href="courses.html" class="nav-link text-dark"><i class="bi bi-journal-text me-2"></i> إدارة الدورات</a></li>
-            <li class="nav-item mb-2"><a href="orders.html" class="nav-link text-dark"><i class="bi bi-cart me-2"></i> الطلبات</a></li>
-        </ul>
-        <hr>
-        <button class="btn btn-outline-secondary w-100 mb-2" id="darkModeToggle"><i class="bi bi-moon me-2"></i> الوضع الليلي</button>
-        <a href="../pages/login.html" class="btn btn-outline-danger w-100"><i class="bi bi-box-arrow-right me-2"></i> خروج</a>
-    </div>
+@extends('layout.app')
 
+@section('title','لوحة تحكم الإدارة - أكاديميتي' )
+
+
+@section('content')
     <div class="main-content">
         <nav class="navbar navbar-light bg-white border-bottom px-4 py-3 sticky-top">
             <button class="btn btn-light d-lg-none" id="sidebarToggle"><i class="bi bi-list fs-4"></i></button>
@@ -106,12 +87,4 @@
             
         </div>
     </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="../assets/js/main.js"></script>
-    <script>
-        // Trigger a demo toast
-        setTimeout(() => showToast('تم تحديث البيانات بنجاح', 'success'), 1000);
-    </script>
-</body>
-</html>
+@endsection

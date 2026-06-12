@@ -1,29 +1,9 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>إدارة المستخدمين - لوحة التحكم</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="../assets/css/style.css">
-</head>
-<body>
+@extends('layout.app')
 
-    <div class="sidebar p-3" id="sidebar">
-        <h4 class="fw-bold text-primary text-center mb-4"><i class="bi bi-shield-lock"></i> الإدارة</h4>
-        <ul class="nav flex-column">
-            <li class="nav-item mb-2"><a href="dashboard.html" class="nav-link text-dark"><i class="bi bi-speedometer2 me-2"></i> لوحة التحكم</a></li>
-            <li class="nav-item mb-2"><a href="users.html" class="nav-link text-dark"><i class="bi bi-people me-2"></i> إدارة المستخدمين</a></li>
-            <li class="nav-item mb-2"><a href="courses.html" class="nav-link text-dark"><i class="bi bi-journal-text me-2"></i> إدارة الدورات</a></li>
-            <li class="nav-item mb-2"><a href="categories.html" class="nav-link text-dark"><i class="bi bi-tags me-2"></i> التصنيفات</a></li>
-            <li class="nav-item mb-2"><a href="orders.html" class="nav-link text-dark"><i class="bi bi-cart me-2"></i> الطلبات</a></li>
-        </ul>
-        <hr>
-        <a href="../pages/login.html" class="btn btn-outline-danger w-100"><i class="bi bi-box-arrow-right me-2"></i> خروج</a>
-    </div>
+@section('title' , 'إدارة المستخدمين - لوحة التحكم')
 
-    <div class="main-content">
+@section('content')
+        <div class="main-content">
         <nav class="navbar navbar-light bg-white border-bottom px-4 py-3 sticky-top">
             <div class="container-fluid d-flex justify-content-between align-items-center">
                 <button class="btn btn-light d-lg-none" id="sidebarToggle"><i class="bi bi-list fs-4"></i></button>
@@ -175,9 +155,4 @@
     </div>
 
     <div id="toastContainer" class="toast-container position-fixed bottom-0 start-0 p-3"></div>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="../assets/js/main.js"></script>
-
-</body>
-</html>
+@endsection

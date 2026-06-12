@@ -11,7 +11,7 @@
                 <p class="text-muted">يمكنك تعديل أسماء الدروس أو تغيير
                     الفيديوهات أو حذفها.</p>
             </div>
-            <a href="manage-lessons.html" class="btn btn-outline-secondary">عودة</a>
+            <a href="{{ route('instructor_manage_courses') }}" class="btn btn-outline-secondary">عودة</a>
         </div>
 
         <div class="card border-0 shadow-sm">
