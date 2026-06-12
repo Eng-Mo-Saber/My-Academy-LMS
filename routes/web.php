@@ -27,10 +27,11 @@ Route::get('/courses', [CourseController::class, 'index'])->name('course_page');
 Route::get('/course-details', [CourseController::class, 'show'])->name('course-details_page');
 
 Route::middleware(['auth'])->group(function () {
-
+    
     Route::get('/checkout', [PaymentController::class, 'index'])->name('checkout_page');
     Route::get('/payment-success', [PaymentController::class, 'payment_success'])->name('payment_success_page');
     Route::get('/payment-failed', [PaymentController::class, 'payment_failed'])->name('payment_failed_page');
+    Route::get('/logout', [LoginController::class, 'destroy'])->name('logout');
 
 });
 
