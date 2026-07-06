@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -27,7 +28,34 @@ class LoginController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $check_user = $request->validate([
+            'email' => 'required|email',
+            'password' => 'required|string|min:8',
+        ]);
+
+
+
+        if (Auth::attempt($check_user)) {
+            $request->session()->regenerate();
+
+            if (Auth::user()->role == 'admin') {
+                //                                 URL Page
+                return redirect()->intended('admin-dashboard');
+
+            } elseif (Auth::user()->role == 'instructor') {
+                //                                 URL Page
+                return redirect()->intended('instructor-dashboard');
+
+            } elseif (Auth::user()->role == 'student') {
+                //                                 URL Page
+                return redirect()->intended('student-dashboard');
+
+            }
+        }else{
+            return redirect()->back()->withErrors(['error' => 'البريد الالكتروني او كلمة المرور غير صحيحة']);
+        }
+
     }
 
     /**
@@ -57,8 +85,13 @@ class LoginController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Request $request)
     {
-        //
+        Auth::logout();
+        // delete session 
+        $request->session()->invalidate();
+        // regenerate Token CSRF
+        $request->session()->regenerateToken();
+        return redirect()->route('home_page');
     }
 }

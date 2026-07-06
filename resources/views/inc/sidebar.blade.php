@@ -52,7 +52,11 @@
     @endif
 
     <hr>
-    <a href="{{ route('logout') }}" class="btn btn-outline-danger w-100"><i class="bi bi-box-arrow-right me-2"></i> تسجيل
-        خروج</a>
+    <form action="{{ route('logout') }}" method="POST" class="w-100 m-0">
+        @csrf
+        <button type="submit" class="btn btn-outline-danger w-100">
+            <i class="bi bi-box-arrow-right me-2"></i> تسجيل خروج
+        </button>
+    </form>
 </div>
 @endauth

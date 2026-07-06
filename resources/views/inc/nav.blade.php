@@ -13,7 +13,6 @@
                 <li class="nav-item"><a class="nav-link" href="{{ route('course_page') }}">الدورات</a></li>
             </ul>
             <div class="d-flex gap-2">
-                <button class="btn btn-outline-secondary" id="darkModeToggle"><i class="bi bi-moon"></i></button>
                 <a href="{{ route('login_page') }}" class="btn btn-outline-primary">تسجيل الدخول</a>
                 <a href="{{ route('register_page') }}" class="btn btn-primary">إنشاء حساب</a>
             </div>

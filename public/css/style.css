@@ -290,6 +290,7 @@ body.dark-mode {
     border-radius: 15px !important;
     border: none !important;
     margin-bottom: 1.5rem;
+
 }
 
 .form-control:focus {
@@ -328,4 +329,70 @@ body.dark-mode {
     background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(5px);
     border-bottom: 2px solid #eee;
+}
+
+
+.divider {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #888;
+}
+
+.divider::before,
+.divider::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.divider:not(:empty)::before {
+    margin-left: .5em;
+}
+
+.divider:not(:empty)::after {
+    margin-right: .5em;
+}
+
+.social-icon-btn {
+    font-size: 1.3rem;
+    width: 45px;
+    height: 45px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.2s ease;
+    border: 1px solid #dee2e6;
+    background-color: #fff;
+}
+
+.social-icon-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* الألوان الرسمية عند الـ Hover */
+.btn-google:hover {
+    color: #db4437;
+    border-color: #db4437;
+    background-color: #fdf5f4;
+}
+
+.btn-facebook:hover {
+    color: #1877f2;
+    border-color: #1877f2;
+    background-color: #f0f6ff;
+}
+
+.btn-github:hover {
+    color: #24292e;
+    border-color: #24292e;
+    background-color: #f6f8fa;
+}
+
+.btn-linkedin:hover {
+    color: #0a66c2;
+    border-color: #0a66c2;
+    background-color: #f0f7fe;
 }
