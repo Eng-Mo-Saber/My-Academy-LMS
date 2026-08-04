@@ -19,6 +19,9 @@ class SocialiteController extends Controller
         // هنا هيجيب بيانات المستخدم من المشغل
         $user = Socialite::driver($provider)->user();
         // هشوف الايميل موجود عندي ولا لا 
+        if(!$user->getEmail()){
+            return redirect()->route('register_page')->withErrors(['error'=>'البريد الالكتروني غير متوفر يرجي التسجيل بتطبيق اخر']);
+        }
         $check_user = User::where('email', $user->getEmail())->first();
         // لو الايميل مش موجود هسجله وهسجل بيانات المشغل اللي سجل منه 
         if(!$check_user) {

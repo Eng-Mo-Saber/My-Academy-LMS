@@ -46,14 +46,11 @@
                     <a href="{{ route('auth_redirect','google') }}" class="social-icon-btn btn-google text-secondary" title="Google">
                         <i class="bi bi-google"></i>
                     </a>
-                    <a href="#" class="social-icon-btn btn-facebook text-secondary" title="Facebook">
+                    <a href="{{route('auth_redirect', 'facebook')}}" class="social-icon-btn btn-facebook text-secondary" title="Facebook">
                         <i class="bi bi-facebook"></i>
                     </a>
                     <a href="{{ route('auth_redirect','github') }}" class="social-icon-btn btn-github text-secondary" title="GitHub">
                         <i class="bi bi-github"></i>
-                    </a>
-                    <a href="#" class="social-icon-btn btn-linkedin text-secondary" title="LinkedIn">
-                        <i class="bi bi-linkedin"></i>
                     </a>
                 </div>
             </div>

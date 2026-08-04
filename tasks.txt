@@ -1,3 +1,0 @@
- 1- login and logout // تم 
- register  // تم
- 2- login - register in socialite (google->تم - github->تم - facebook - linkedin)

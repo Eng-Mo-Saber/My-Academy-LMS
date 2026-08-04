@@ -1,18 +1,18 @@
 <?php
 
-namespace App\Http\Controllers\instructor;
+namespace App\Http\Controllers\admin_insrtuctor;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class ManageCoursesController extends Controller
+class ManagementLessonsController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('instructor.manage-courses');
+        return view('admin_instructor.manage-courses');
     }
 
     /**
@@ -20,8 +20,7 @@ class ManageCoursesController extends Controller
      */
     public function create()
     {
-        return view('instructor.create-course');
-
+        //
     }
 
     /**
@@ -37,7 +36,7 @@ class ManageCoursesController extends Controller
      */
     public function show(string $id)
     {
-        return view('instructor.course-lessons');
+        return view('admin_instructor.course-lessons');
     }
 
     /**

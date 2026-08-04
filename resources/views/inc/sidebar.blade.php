@@ -3,18 +3,32 @@
 <div class="sidebar p-3 shadow-sm" id="sidebar">
 
     {{-- admin --}}
-    @if(auth()->user()->role == 'admin')
+    @if(auth()->user()->role == 'admin' || auth()->user()->role == 'instructor')
 
-    <h4 class="fw-bold text-primary text-center mb-4"><i class="bi bi-shield-lock"></i> الإدارة</h4>
     <ul class="nav flex-column">
+        @if (auth()->user()->role == 'admin')
+        <h4 class="fw-bold text-primary text-center mb-4"><i class="bi bi-shield-lock"></i> الإدارة</h4>
+        {{-- يتعرض للادمين فقط --}}
         <li class="nav-item mb-2"><a href="{{ route('admin_dashboard') }}" class="nav-link text-dark"><i class="bi bi-speedometer2 me-2"></i> لوحة التحكم</a></li>
         <li class="nav-item mb-2"><a href="{{ route('admin_users') }}" class="nav-link text-dark"><i class="bi bi-people me-2"></i>
-                إدارة
-                المستخدمين</a></li>
-        <li class="nav-item mb-2"><a href="{{ route('admin_categories') }}" class="nav-link text-dark"><i class="bi bi-list-task me-2"></i> إدارة التصنيفات</a></li>
-        <li class="nav-item mb-2"><a href="{{ route('admin_courses') }}" class="nav-link text-dark"><i class="bi bi-journal-text me-2"></i> إدارة الدورات</a></li>
-        <li class="nav-item mb-2"><a href="{{ route('admin_orders') }}" class="nav-link text-dark"><i class="bi bi-cart me-2"></i>
+            إدارة
+            المستخدمين</a></li>
+            <li class="nav-item mb-2"><a href="{{ route('admin_categories') }}" class="nav-link text-dark"><i class="bi bi-list-task me-2"></i> إدارة التصنيفات</a></li>
+            <li class="nav-item mb-2"><a href="{{ route('admin_orders') }}" class="nav-link text-dark"><i class="bi bi-cart me-2"></i>
                 الطلبات</a></li>
+        @endif
+        {{-- يتعرض للانستركتور فقط --}}
+        @if (auth()->user()->role == 'instructor')
+        {{-- instructor --}}
+        <h4 class="fw-bold text-primary text-center mb-4"><i class="bi bi-easel"></i> لوحة المدرب</h4>
+        <li class="nav-item mb-2"><a href="{{ route('instructor_dashboard') }}" class="nav-link text-dark"><i class="bi bi-list-task me-2"></i> لوحة المدرب</a></li>
+        @endif
+        {{-- يتعرض للادمين والانستراكتور  --}}
+        <li class="nav-item mb-2"><a href="{{ route('manage_courses') }}" class="nav-link text-dark"><i class="bi bi-journal-text me-2"></i> إدارة الدورات</a></li>
+        <li class="nav-item mb-2"><a href="{{ route('manage_courses_lessons') }}" class="nav-link text-dark"><i class="bi bi-gear me-2"></i> ادارة
+                الدروس</a></li>
+
+
     </ul>
     @endif
 
@@ -36,20 +50,7 @@
     </ul>
     @endif
 
-    {{-- instructor --}}
-    @if (auth()->user()->role == 'instructor')
 
-
-    <div class="p-4 border-bottom text-center">
-        <h5 class="fw-bold mb-0 text-primary">لوحة المدرب</h5>
-    </div>
-    <ul class="nav flex-column">
-        <li class="nav-item mb-2"><a href="{{ route('instructor_dashboard') }}" class="nav-link text-dark"><i class="bi bi-list-task me-2"></i> لوحة المدرب</a></li>
-        <li class="nav-item mb-2"><a href="{{ route('instructor_create_courses') }}" class="nav-link text-dark"><i class="bi bi-journal-text me-2"></i> إنشاء دورة</a></li>
-        <li class="nav-item mb-2"><a href="{{ route('instructor_manage_courses') }}" class="nav-link text-dark"><i class="bi bi-cart me-2"></i> ادارة
-                الدروس</a></li>
-    </ul>
-    @endif
 
     <hr>
     <form action="{{ route('logout') }}" method="POST" class="w-100 m-0">

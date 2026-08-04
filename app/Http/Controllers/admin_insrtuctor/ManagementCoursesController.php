@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\admin;
+namespace App\Http\Controllers\admin_insrtuctor;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -13,6 +13,7 @@ class ManagementCoursesController extends Controller
     public function index()
     {
         return view('admin.courses');
+
     }
 
     /**
@@ -20,7 +21,8 @@ class ManagementCoursesController extends Controller
      */
     public function create()
     {
-        return view('admin.add-course');
+        return view('admin_instructor.add-course');
+
     }
 
     /**

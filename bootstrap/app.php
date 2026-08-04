@@ -3,6 +3,7 @@
 use App\Http\Middleware\AdminMiddleware;
 use App\Http\Middleware\AuthMiddleware;
 use App\Http\Middleware\InstructorMiddleware;
+use App\Http\Middleware\RoleMiddleware;
 use App\Http\Middleware\StudentMiddleware;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
@@ -20,7 +21,8 @@ return Application::configure(basePath: dirname(__DIR__))
                 'instructor' => InstructorMiddleware::class,
                 'student' => StudentMiddleware::class,
                 'auth' => AuthMiddleware::class,
-                'admin' => AdminMiddleware::class
+                'admin' => AdminMiddleware::class,
+                'role' => RoleMiddleware::class,
             ]
 
         );

@@ -2,13 +2,13 @@
 
 use App\Http\Controllers\admin\AdminDashboardController;
 use App\Http\Controllers\admin\CategoriesController;
-use App\Http\Controllers\admin\ManagementCoursesController;
 use App\Http\Controllers\admin\OrdersController;
 use App\Http\Controllers\admin\UsersController;
+use App\Http\Controllers\admin_insrtuctor\ManagementCoursesController;
+use App\Http\Controllers\admin_insrtuctor\ManagementLessonsController;
 use App\Http\Controllers\course\CourseController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\instructor\DashboardController;
-use App\Http\Controllers\instructor\ManageCoursesController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\payment\PaymentController;
 use App\Http\Controllers\RegisterController;
@@ -20,6 +20,8 @@ use App\Http\Controllers\student\QuizController;
 use App\Http\Controllers\student\StudentDashboardController;
 use Illuminate\Support\Facades\Route;
 
+
+
 // public pages
 Route::get('/', [HomeController::class, 'index'])->name('home_page');
 Route::get('/login', [LoginController::class, 'index'])->name('login_page');
@@ -28,12 +30,12 @@ Route::get('/register', [RegisterController::class, 'index'])->name('register_pa
 Route::post('/register-store', [RegisterController::class, 'store'])->name('register_store');
 Route::get('/courses', [CourseController::class, 'index'])->name('course_page');
 Route::get('/course-details', [CourseController::class, 'show'])->name('course-details_page');
-//register socialite github
+// register socialite github
 Route::get('/auth/redirect/{provider}', [SocialiteController::class, 'auth_redirect'])->name('auth_redirect');
 Route::get('/auth/callback/{provider}', [SocialiteController::class, 'auth_callback'])->name('auth_callback');
 
 Route::middleware(['auth'])->group(function () {
-    
+
     Route::get('/checkout', [PaymentController::class, 'index'])->name('checkout_page');
     Route::get('/payment-success', [PaymentController::class, 'payment_success'])->name('payment_success_page');
     Route::get('/payment-failed', [PaymentController::class, 'payment_failed'])->name('payment_failed_page');
@@ -42,27 +44,31 @@ Route::middleware(['auth'])->group(function () {
 });
 
 
-// instructor pages
-Route::middleware(['auth', 'instructor'])->group(function () {
-    Route::get('/instructor-dashboard', [DashboardController::class, 'index'])->name('instructor_dashboard');
-    Route::get('/manage-courses', [ManageCoursesController::class, 'index'])->name('instructor_manage_courses');
-    Route::get('/manage-lesson/{id}', [ManageCoursesController::class, 'show'])->name('instructor_manage_lesson');
-    Route::get('/create-course', [ManageCoursesController::class, 'create'])->name('instructor_create_courses');
+// admin and instructor
+Route::middleware(['auth', 'role:admin,instructor'])->group(function () {
+    Route::get('/add-course', [ManagementCoursesController::class, 'create'])->name('add_courses');
+    Route::get('/manage-courses', [ManagementCoursesController::class, 'index'])->name('manage_courses');
+    Route::get('/manage-lesson', [ManagementLessonsController::class, 'index'])->name('manage_courses_lessons');
+    Route::get('/manage-lesson/{id}', [ManagementLessonsController::class, 'show'])->name('manage_lesson');
 
 });
 
+// instructor pages
+Route::middleware(['auth', 'instructor'])->group(function () {
+    Route::get('/instructor-dashboard', [DashboardController::class, 'index'])->name('instructor_dashboard');
+
+});
 
 // admin pages
 Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/admin-dashboard', [AdminDashboardController::class, 'index'])->name('admin_dashboard');
-    Route::get('/admin-courses', [ManagementCoursesController::class, 'index'])->name('admin_courses');
-    Route::get('/admin-add-course', [ManagementCoursesController::class, 'create'])->name('admin_add_courses');
     Route::get('/admin-orders', [OrdersController::class, 'index'])->name('admin_orders');
     Route::get('/admin-users', [UsersController::class, 'index'])->name('admin_users');
+    Route::post('/add-user', [UsersController::class, 'store'])->name('add_users');
+    Route::delete('/delete-user/{id}', [UsersController::class, 'destroy'])->name('delete_users');
     Route::get('/admin-categories', [CategoriesController::class, 'index'])->name('admin_categories');
 
 });
-
 
 // student pages
 Route::middleware(['auth', 'student'])->group(function () {

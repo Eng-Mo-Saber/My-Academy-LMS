@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers\admin;
 
+use App\Enums\Role;
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rules\Enum;
 
 class UsersController extends Controller
 {
@@ -12,7 +16,8 @@ class UsersController extends Controller
      */
     public function index()
     {
-        return view('admin.users');
+        $users = User::all();
+        return view('admin.users' , compact('users'));
     }
 
     /**
@@ -28,7 +33,21 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name'=>'required|string|min:10',
+            'email'=>'required|email|unique:users,email',
+            'role'=>'required',[new Enum(Role::class)],
+            'password'=>'required|string|min:8|max:15',
+        ]);
+
+        User::create([
+            'name'=> $request->name,
+            'email'=> $request->email,
+            'role'=> $request->role,
+            'password'=> Hash::make($request->password) ,
+        ]);
+
+        return redirect()->route('admin_users')->with(['success'=>'add user successfully']);
     }
 
     /**
@@ -60,6 +79,9 @@ class UsersController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $user = User::find($id);
+        $user->delete();
+        return redirect()->route('admin_users')->with(['success'=>'deleted user successfully']);
+
     }
 }

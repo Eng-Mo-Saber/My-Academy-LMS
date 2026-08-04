@@ -23,7 +23,7 @@
                             <td>تعلم Laravel من الصفر</td>
                             <td>12 درس</td>
                             <td>
-                                <a href="{{ route('instructor_manage_lesson',1) }}"
+                                <a href="{{ route('manage_lesson',1) }}"
                                     class="btn btn-sm btn-outline-info me-1">
                                     <i class="bi bi-list-task"></i> الدروس
                                 </a>

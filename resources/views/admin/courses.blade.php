@@ -6,7 +6,7 @@
             <div class="main-content p-4">
             <div class="d-flex justify-content-between align-items-center mb-4">
                 <h3 class="fw-bold">إدارة الدورات</h3>
-                <a href="{{ route('admin_add_courses') }}"
+                <a href="{{ route('add_courses') }}"
                     class="btn btn-primary shadow-sm fw-bold">
                     <i class="bi bi-plus-circle me-1"></i> إضافة دورة جديدة
                 </a>
@@ -46,15 +46,6 @@
                                     <td><span
                                             class="badge bg-success-subtle text-success">منشورة</span></td>
                                     <td class="text-center">
-
-                                        <button
-                                            class="btn btn-sm btn-outline-success"
-                                            data-bs-toggle="modal"
-                                            data-bs-target="#addLessonModal"
-                                            title="إضافة دروس">
-                                            <i class="bi bi-plus-lg"></i> إضافة
-                                            درس
-                                        </button>
                                         <button
                                             class="btn btn-sm btn-outline-primary"
                                             data-bs-toggle="modal"
